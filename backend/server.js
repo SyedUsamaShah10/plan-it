@@ -17,7 +17,7 @@ app.use(express.json());
 
 connectDB();
 
-app.use("/", taskRoutes);
+app.use("/api", taskRoutes);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
