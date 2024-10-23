@@ -7,7 +7,7 @@ import taskRoutes from "./routes/task.routes.js";
 
 const PORT = process.env.PORT || 5000;
 
-const __dirname = process.env.PORT || 5000;
+const __dirname = path.resolve();
 
 const app = express();
 
