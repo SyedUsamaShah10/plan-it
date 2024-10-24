@@ -12,7 +12,7 @@ function InputArea(props) {
 
   const createTodo = (data) => {
     axios
-      .post("http://localhost:5000/createTodo", {
+      .post("/api/createTodo", {
         data: inputText,
       })
       .then((response) => {

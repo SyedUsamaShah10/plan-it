@@ -1,11 +1,13 @@
 import Todo from "../model/Todo.js";
 
 export const getAllTasks = async (req, res) => {
-  const todos = await Todo.find({});
-
-  res.send({
-    todos,
-  });
+  try {
+    const todos = await Todo.find({});
+    return res.status(200).json({ todos: todos });
+  } catch (error) {
+    console.error("Error in getAllTasks controller", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 export const addTask = async (req, res) => {

@@ -14,13 +14,16 @@ function App() {
     fetchTodos();
   }
 
-  const fetchTodos = () => {
-    fetch("http://localhost:5000/")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("data", data);
-        setItems(data?.todos);
-      });
+  const fetchTodos = async () => {
+    try {
+      const res = await fetch("/api");
+      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+      const data = await res.json();
+      setItems(data?.todos);
+    } catch (error) {
+      console.log("Failed to load todos");
+      toast.error(error.message);
+    }
   };
 
   useEffect(() => {
@@ -28,7 +31,7 @@ function App() {
   }, []);
 
   const deleteItem = (id) => {
-    axios.delete("http://localhost:5000/deleteTodo/" + id).then(() => {
+    axios.delete("http://localhost:5000/api/deleteTodo/" + id).then(() => {
       toast.success("Todo Deleted");
       fetchTodos();
     });

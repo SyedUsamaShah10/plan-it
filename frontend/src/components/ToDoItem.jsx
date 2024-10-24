@@ -33,13 +33,9 @@ function ToDoItem(props) {
 
   const updateItem = async (id) => {
     try {
-      debugger;
-      const response = await axios.put(
-        `http://localhost:5000/updateTodo/${id}`,
-        {
-          data: updateInput,
-        }
-      );
+      const response = await axios.put(`/api/updateTodo/${id}`, {
+        data: updateInput,
+      });
 
       if (response.status === 200) {
         toast.success("Todo Updated");
