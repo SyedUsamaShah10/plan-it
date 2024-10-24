@@ -46,6 +46,9 @@ function ToDoItem(props) {
       toast.error("Error updating todo");
     }
   };
+  const truncateText = (text) => {
+    return text.length > 15 ? text.slice(0, 15) + "..." : text;
+  };
 
   return (
     <div
@@ -86,7 +89,9 @@ function ToDoItem(props) {
           </div>
         </div>
       ) : (
-        <li>{props.text}</li>
+        <li>
+          {truncateText(props.text)} {/* Use the truncateText function */}
+        </li>
       )}
 
       <div>
