@@ -47,7 +47,7 @@ function ToDoItem(props) {
     }
   };
   const truncateText = (text) => {
-    return text.length > 15 ? text.slice(0, 15) + "..." : text;
+    return text?.length > 15 ? text.slice(0, 15) + "..." : text;
   };
 
   return (
